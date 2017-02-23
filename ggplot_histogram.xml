@@ -41,8 +41,8 @@
     <inputs>
         <param name="input1" type="data" format="tabular" label="Input should have column headers - these will be the columns that are plotted"/>
         <param name="title" size="30" type="text"  format="txt"/>
-        <param name="xlab" size="30" type="text" value="title of x-axis" label="Label for x axis"/>
-        <param name="ylab" size="30" type="text" value="title of y-axis" label="Label for x axis"/>
+        <param name="xlab" size="30" type="text" value="title of x-axis" label="Label for x-axis"/>
+        <param name="ylab" size="30" type="text" value="title of y-axis" label="Label for y-axis"/>
         <param name="size" size="4" type="float" value="1" label="relative line width" />
         <param name="binwidth" size="4" type="float" value="0.5" label="Bin width for plotting"/>
         <conditional name="transformation">
@@ -151,13 +151,23 @@
         </test>
     </tests>
     <help><![CDATA[
-        /bin/sh: uh: command not found
+        /bin/sh: 
+This tool will generate a histogram representing the distrinutions of each numerical column. Each column should have a descriptive header with no spaces, which will be used in the plot legend to represent the corresponding column (group).
+
+Input data example:
+ID  Cond_A Cond_B
+gene_A  10  15
+gene_B  8   12
+gene_C 10   15
+gene_D  6   9
+gene_E  9   13.5
+gene_F  8   12
 
     ]]></help>
     <citations>
         <citation type="bibtex">
 @misc{renameTODO,
-  author = {Michelle Clinton, FirstTODO},
+  author = {FirstTODO},
   year = {TODO},
   title = {TODO},
   url = {under construction},
