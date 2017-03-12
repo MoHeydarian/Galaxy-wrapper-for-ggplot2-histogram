@@ -8,7 +8,10 @@
         <exit_code range="1:" />
     </stdio>
     <command><![CDATA[
-        Rscript ${__tool_directory__}/ggplotscripthistogram.R --input "$input1" --title "$title" --xlab "$xlab" --ylab "$ylab" --transform "$transformation.transform" --scaling "$scaling.Plot_scaling" --colorscheme "$coloring.colorscheme" --dim "$dimensions.plotdim" --facet "$group.facet" --size "$size" --binwidth "$binwidth" --output "Rplot.pdf"
+        Rscript ${__tool_directory__}/ggplotscripthistogram.R --input "$input1" --title "$title" 
+        --xlab "$xlab" --ylab "$ylab" --transform "$transformation.transform" --scaling "$scaling.Plot_scaling" 
+        --colorscheme "$coloring.colorscheme" --dim "$dimensions.plotdim" --facet "$group.facet" 
+        --size "$size" --binwidth "$binwidth" --legend "$legend" --output "Rplot.pdf"
         #if str( $coloring.colorscheme ) == "Defined":
             --colors ${coloring.colors}
             --colororder ${coloring.colororder}
@@ -138,6 +141,12 @@
                 <param name="woutputdim" size="4" type="float" value="7" label="width of output (inches)" />
                 <param name="houtputdim" size="4" type="float" value="7" label="height of output (inches)" />
             </when>
+        </conditional>
+        <conditional name="legend">
+            <param name="legend" type="select" label="Legend options">
+              <option value="TRUE">Include legend on plot</option>
+              <option value="FALSE">Hide legend</option>
+            </param>
         </conditional>
     </inputs>
     <outputs>
