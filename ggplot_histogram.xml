@@ -144,8 +144,8 @@
         </conditional>
         <conditional name="showlegend">
             <param name="legend" type="select" label="Legend options">
-              <option value="TRUE">Include legend on plot</option>
-              <option value="FALSE">Hide legend</option>
+              <option value="NULL">Include legend on plot</option>
+              <option value="theme(legend.position="none")">Hide legend</option>
             </param>
         </conditional>
     </inputs>
