@@ -36,6 +36,7 @@ option_specification = matrix(c(
   'houtputdim', 'd', 2, 'integer',
   'dim', 'k', 2, 'character',
   'scaling', 'j', 2, 'character',
+  'legend', 'l', 2, 'character',
   'output', 'o', 2, 'character'
   ), byrow=TRUE, ncol=4);
 
@@ -57,6 +58,7 @@ cat("\n output: ",options$output)
 integrated <- read.csv(options$input,sep='\t',header=TRUE)
 input <- melt(integrated)
 
+gg_legend = show.legend=options$legend
 
 #Choose between automatically scaled x and y axis or user defined
 if(options$scaling == "Automatic"){
@@ -107,7 +109,7 @@ if(options$colorscheme == "Default"){
 
 ggplot(input,aes(value,color=variable)) +
 geom_freqpoly(binwidth=options$binwidth,size=options$size)+gg_facet+gg_colorscale+
-gg_scalex+gg_scaley+theme_bw()+xlab(options$xlab)+ylab(options$ylab)+
+gg_scalex+gg_scaley+theme_bw()+xlab(options$xlab)+ylab(options$ylab)+gg_legend+
 ggtitle(options$title)
 
 ggsave(file=options$output)
