@@ -58,7 +58,12 @@ cat("\n output: ",options$output)
 integrated <- read.csv(options$input,sep='\t',header=TRUE)
 input <- melt(integrated)
 
-gg_legend = show.legend=options$legend
+#Show/hide legend
+if(options$legend == "TRUE"){
+    gg_legend = NULL
+} else {options$legend == "FALSE"
+    gg_legend = theme(legend.position="none")
+}
 
 #Choose between automatically scaled x and y axis or user defined
 if(options$scaling == "Automatic"){
