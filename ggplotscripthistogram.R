@@ -59,9 +59,9 @@ integrated <- read.csv(options$input,sep='\t',header=TRUE)
 input <- melt(integrated)
 
 #Show/hide legend
-if(options$legend == "TRUE"){
+if(options$legend == "yes"){
     gg_legend = NULL
-} else {options$legend == "FALSE"
+} else {options$legend == "no"
     gg_legend = theme(legend.position="none")
 }
 
