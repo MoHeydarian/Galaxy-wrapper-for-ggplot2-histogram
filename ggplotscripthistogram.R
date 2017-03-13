@@ -61,7 +61,7 @@ input <- melt(integrated)
 #Show/hide legend
 if(options$legend == "yes"){
     gg_legend = NULL
-} else {options$legend == "no"
+} else {
     gg_legend = theme(legend.position="none")
 }
 
