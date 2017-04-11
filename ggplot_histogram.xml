@@ -1,4 +1,4 @@
-<tool id="ggplot_histogram" name="Histogram w ggplot2" version="0.1.2">
+<tool id="ggplot_histogram" name="Histogram w ggplot2" version="0.1.3">
     <requirements>
         <requirement type="package">r-getopt</requirement>
         <requirement type="package">r-ggplot2</requirement>
@@ -9,7 +9,7 @@
     </stdio>
     <command><![CDATA[
         Rscript ${__tool_directory__}/ggplotscripthistogram.R --input "$input1" --title "$title" 
-        --xlab "$xlab" --ylab "$ylab" --transform "$transformation.transform" --scaling "$scaling.Plot_scaling" 
+        --xlab "$xlab" --ylab "$ylab" --transform "$transformation.transform" --scaling "$scaling.Plot_scaling" --density "$distribution.density"
         --colorscheme "$coloring.colorscheme" --dim "$dimensions.plotdim" --facet "$group.facet" 
         --size "$size" --binwidth "$binwidth" --legend "$showlegend.legend" --output "Rplot.pdf"
         #if str( $coloring.colorscheme ) == "Defined":
@@ -55,6 +55,12 @@
               <option value="log2plus1">Log2(value+1) transform my data</option>
               <option value="log10">Log10(value) transform my data</option>
               <option value="log10plus1">Log10(value+1) transform my data</option>
+            </param>
+        </conditional>
+        <conditional name="distribution">
+            <param name="density" type="select" label="Advanced - plot counts or density">
+              <option value="counts">Plot counts on the y-axis</option>
+              <option value="density">Plot frequency on the y-axis</option>
             </param>
         </conditional>
         <conditional name="group">

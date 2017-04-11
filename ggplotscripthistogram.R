@@ -37,6 +37,7 @@ option_specification = matrix(c(
   'dim', 'k', 2, 'character',
   'scaling', 'j', 2, 'character',
   'legend', 'l', 2, 'character',
+  'density', 'm', 2, 'character',
   'output', 'o', 2, 'character'
   ), byrow=TRUE, ncol=4);
 
@@ -63,6 +64,15 @@ if(options$legend == "yes"){
     gg_legend = NULL
 } else {
     gg_legend = theme(legend.position="none")
+}
+
+#density 
+if(options$density == "counts"){
+    gg_density = ggplot(input,aes(value ,color=variable))
+
+} else {
+    gg_density = ggplot(input,aes(value, ..ncount..,color=variable))
+
 }
 
 #Choose between automatically scaled x and y axis or user defined
@@ -112,7 +122,7 @@ if(options$colorscheme == "Default"){
     gg_colorscale = scale_color_brewer(palette=options$colors, direction=options$colororder)
   }
 
-ggplot(input,aes(value,color=variable)) +
+gg_density +
 geom_freqpoly(binwidth=options$binwidth,size=options$size)+gg_facet+gg_colorscale+
 gg_scalex+gg_scaley+theme_bw()+xlab(options$xlab)+ylab(options$ylab)+gg_legend+
 ggtitle(options$title)
