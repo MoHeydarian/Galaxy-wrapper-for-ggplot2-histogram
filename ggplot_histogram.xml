@@ -60,7 +60,8 @@
         <conditional name="distribution">
             <param name="density" type="select" label="Advanced - plot counts or density">
               <option value="counts">Plot counts on the y-axis</option>
-              <option value="density">Plot frequency on the y-axis</option>
+              <option value="freq">Plot frequency on the y-axis</option>
+              <option value="nfreq">Plot normalized frequency on the y-axis</option>
             </param>
         </conditional>
         <conditional name="group">

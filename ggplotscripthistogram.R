@@ -68,10 +68,15 @@ if(options$legend == "yes"){
 
 #density 
 if(options$density == "counts"){
-    gg_density = ggplot(input,aes(value ,color=variable))
-
-} else {
-    gg_density = ggplot(input,aes(value, ..ncount..,color=variable))
+    gg_density = ggplot(input,aes(value, color=variable))
+    gg_freq = NULL
+}else if(options$density == "nfreq"){
+    gg_density = ggplot(input,aes(value, ..ncount.., color=variable))
+    gg_freq = NULL
+}else if(options$density == "freq"){
+    gg_density = ggplot(input,aes(value, color=variable))
+    gg_freq = aes(y=..count../sum(..count..))
+}else {
 
 }
 
@@ -123,7 +128,7 @@ if(options$colorscheme == "Default"){
   }
 
 gg_density +
-geom_freqpoly(binwidth=options$binwidth,size=options$size)+gg_facet+gg_colorscale+
+geom_freqpoly(gg_freq,binwidth=options$binwidth,size=options$size)+gg_facet+gg_colorscale+
 gg_scalex+gg_scaley+theme_bw()+xlab(options$xlab)+ylab(options$ylab)+gg_legend+
 ggtitle(options$title)
 
